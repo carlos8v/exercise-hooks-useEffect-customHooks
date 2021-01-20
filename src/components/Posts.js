@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { Consumer } from './RedditContext';
+import { RedditContext } from '../context/RedditProvider';
 
-const Posts = () => (
-  <Consumer>
-    {({ posts }) => (
-      <ul>
-        {posts.map(({ id, title }) => <li key={id}>{title}</li>)}
-      </ul>
-    )}
-  </Consumer>
-);
+function Posts() {
+  const { posts } = useContext(RedditContext);
+  return(
+    <ul>
+      {posts.map(({ id, title }) => <li key={id}>{title}</li>)}
+    </ul>
+  );
+}
 
 export default Posts;
